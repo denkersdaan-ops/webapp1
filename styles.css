@@ -87,13 +87,15 @@ body {
 }
 
 .category {
-  font-size: 2rem;
   padding: 15px;
   border-radius: 10px;
   cursor: pointer;
 }
 
-
+.category-icon {
+  width: 40px;
+  height: 40px;
+}
 
 /* PRODUCTEN */
 .products {
@@ -114,7 +116,7 @@ body {
 .prijs {
   display: flex;
   width: auto;
-  color: gray;  
+  color: gray;
 }
 
 .add {
