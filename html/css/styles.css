@@ -1,0 +1,293 @@
+/* =======================================
+   RESET
+======================================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "DynaPuff", Arial, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  /* pagina zelf mag nooit scrollen */
+}
+
+/* =======================================
+   BODY (GEEFT 30PX RANDEN)
+======================================= */
+body {
+  padding: 30px;
+  /* vaste 30px afstand */
+  background: white;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  /* ruimte tussen header en main */
+  min-height: 0;
+  /* flex fix */
+}
+
+/* =======================================
+   MAIN (DIT WAS HET GROOTSTE PROBLEEM!)
+======================================= */
+main {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  /* vult ALLE resterende ruimte */
+  gap: 40px;
+  min-height: 0;
+  /* flex fix */
+}
+
+/* =======================================
+   BOX SHADOW
+======================================= */
+.box-shadow {
+  background: white;
+  /* je contentvlak */
+  border: 2px solid transparent;
+  /* we vullen de border met een image */
+  border-image: repeating-linear-gradient(45deg,
+      white 0 6px,
+      black 6px 10px) 1;
+  /* stripes in de rand */
+  position: relative;
+  /* kan blijven voor consistentie */
+}
+
+/* De wrapper tekent de "uitstekende" strepen */
+.stripe-shadow {
+  position: relative;
+  /* ruimte aan de onder- en rechterkant voor de 'schaduw' */
+
+  padding-right: 12px;
+  padding-bottom: 12px;
+}
+
+/* De gestreepte laag ligt onder de content maar BINNEN de wrapper,
+   dus wordt niet door overflow van scrollcontainers afgeknipt. */
+.stripe-shadow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* exact over de wrapper */
+  border-radius: inherit;
+  border: 2px solid black;
+  background: repeating-linear-gradient(45deg,
+      white 0 6px,
+      black 6px 10px);
+  z-index: 0;
+}
+
+/* Je eigenlijke kaart/knop/etc. ligt erboven */
+
+.stripe-minimal {
+  margin-top: 20px;
+  width: min-content;
+  height: min-content;
+}
+
+.stripe-maximal {
+  width: 100%;
+  height: 100%;
+}
+
+.stripe-shadow>.box-content,
+.stripe-shadow>.category,
+.stripe-shadow>.product,
+.stripe-shadow>.cart,
+.stripe-shadow>.hero,
+.stripe-shadow>.add,
+.stripe-shadow>.logo {
+  background: white;
+  border: 2px solid black;
+  z-index: 1;
+  /* boven de gestreepte laag */
+}
+
+.rounded {
+  border-radius: 10px;
+}
+
+/* Belangrijk bij scrollcontainers zodat de stripes niet verdwijnen in z-lagen */
+.stripe-shadow {
+  isolation: isolate;
+}
+
+/* =======================================
+   HEADER
+======================================= */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.logo {
+  padding: 20px;
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+
+.header-nav {
+  display: flex;
+  gap: 15px;
+  height: 100%;
+  align-items: end;
+}
+
+.header-nav a {
+  padding-left: 15px;
+  padding-top: 15px;
+  text-decoration: none;
+  color: black;
+}
+
+.nav {
+  height: min-content;
+  padding-top: 17px;
+}
+
+/* =======================================
+   HERO
+======================================= */
+.hero {
+  flex: 0 0 auto;
+  padding: 40px;
+}
+
+.hero h1 {
+  margin-bottom: 10px;
+}
+
+.cta {
+  padding: 14px 50px;
+  width: max-content;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+/* =======================================
+   LAYOUT (VULT REST VAN HET SCHERM)
+======================================= */
+.layout {
+  flex: 1 1 auto;
+  /* neemt volledige resterende hoogte */
+  min-height: 0;
+  /* voorkomt uitsteken */
+  display: flex;
+  gap: 40px;
+}
+
+/* =======================================
+   CATEGORIES
+======================================= */
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+
+  overflow-y: auto;
+  border-radius: inherit;
+  /* scroll ONLY hier */
+  overflow-x: hidden;
+  /* voorkom horizontaal scrollen */
+  height: 100%;
+}
+
+.category {
+  padding: 15px;
+  border-radius: inherit;
+  cursor: pointer;
+}
+
+.category-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.last-button {
+  filter: invert(100%);
+}
+
+.last-button>.category {
+  border: 2px solid white;
+}
+
+.stripe-shadow .last-button::after {
+  border: 2px solid white;
+}
+
+
+/* =======================================
+   PRODUCTS
+======================================= */
+
+.current-category {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-bottom: 25px;
+}
+
+.hide {
+  display: none;
+}
+
+.products {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+
+  border-radius: inherit;
+
+  overflow-y: auto;
+  /* scroll ONLY hier */
+  overflow-x: hidden;
+  /* voorkom horizontaal scrollen */
+  width: 100%;
+  height: 100%;
+}
+
+.product {
+  display: grid;
+  grid-template-columns: 5fr 1fr auto;
+  align-items: center;
+  padding: 25px;
+  border-radius: inherit;
+}
+
+.prijs {
+  color: gray;
+}
+
+.add {
+  font-size: 1.4rem;
+  padding: 10px 18px;
+  border-radius: inherit;
+  background: white;
+  cursor: pointer;
+}
+
+/* =======================================
+   CART
+======================================= */
+.cart {
+  height: 100%;
+  width: 260px;
+  padding: 25px;
+  border-radius: inherit;
+
+  overflow-y: auto;
+  /* scroll ONLY hier */
+  overflow-x: hidden;
+}
