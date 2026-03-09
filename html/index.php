@@ -43,51 +43,33 @@
                 <div class="stripe-shadow stripe-minimal">
                     <button class="cta box-shadow box-content" onclick="pay()">Bestel nu</button>
                 </div>
-
-
             </section>
         </div>
 
         <section class="layout">
 
             <!-- CATEGORIEËN -->
-            <aside class="categories" id="category-list">
-                <button class="category box-shadow"><span>🍔</span></button>
-            </aside>
+            <div class="stripe-shadow rounded">
+                <aside class="categories box-shadow box-content" id="category-list">
+                </aside>
+            </div>
 
-            <!-- PRODUCTEN -->
-            <section class="products" id="product-list">
-                <article class="product box-shadow">
-                    <div>
-                        <h2>Classic Burger</h2>
-                        <p>Minimalistische burger</p>
-
-                    </div>
-                    <p class="prijs">€7.95</p>
-                    <button class="add box-shadow">+</button>
-                </article>
-
-                <!-- <article class="product box-shadow">
-                <div>
-                    <h2> Naam </h2>
-                    <p> info </p>
-                </div>
-                <p class="prijs">€7.95</p>
-                <button class="add box-shadow">+</button>
-            </article>
-            -->
-
+            <!-- PRODUCTS SCROLLBOX (mag GEEN shadow wrapper krijgen) -->
+            <div class="stripe-shadow stripe-maximal rounded">
+                <section class="products box-shadow box-content" id="product-list">
+                </section>
+            </div>
 
             </section>
-
-            <!-- WINKELMAND -->
-            <aside class="cart box-shadow">
-                <h3>Shopping cart</h3>
-                <p>Product: ... :Prijs:</p>
-                <hr>
-                <p><strong>Totaal:</strong></p>
-            </aside>
-
+            <!-- CART -->
+            <div class="stripe-shadow rounded">
+                <aside class="cart box-shadow box-content">
+                    <h3>Shopping cart</h3>
+                    <p id="cart-items"></p>
+                    <hr>
+                    <p><strong id="total">Totaal:</strong></p>
+                </aside>
+            </div>
         </section>
 
     </main>
