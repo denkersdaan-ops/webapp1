@@ -35,11 +35,18 @@
     <main>
 
         <!-- HERO / CALL TO ACTION -->
-        <section class="hero box-shadow">
-            <h1>Snelle, minimalistische fastfood.</h1>
-            <p>Rustig, simpel, en stijlvol genieten.</p>
-            <button class="cta box-shadow">Bestel nu</button>
-        </section>
+        <div class="stripe-shadow">
+            <section class="hero box-shadow box-content">
+                <h1>Snelle, minimalistische fastfood.</h1>
+                <p>Rustig, simpel, en stijlvol genieten.</p>
+
+                <div class="stripe-shadow stripe-minimal">
+                    <button class="cta box-shadow box-content" onclick="pay()">Bestel nu</button>
+                </div>
+
+
+            </section>
+        </div>
 
         <section class="layout">
 
