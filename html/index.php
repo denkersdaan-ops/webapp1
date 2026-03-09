@@ -21,6 +21,8 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fastfood</title>
     <link rel="stylesheet" href="css/styles.css?v=1">
+
+    <script src="js/sort.js?v=1"></script>
 </head>
 
 <body>
@@ -102,7 +104,8 @@ try {
             <!-- PRODUCTS SCROLLBOX (mag GEEN shadow wrapper krijgen) -->
             <div class="stripe-shadow stripe-maximal rounded">
                 <?php
-                $stmt = $pdo->query("SELECT * FROM product categorie_id");
+                // Load all products - filtering happens in JavaScript
+                $stmt = $pdo->query("SELECT * FROM product ORDER BY categorie_id");
                 $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
@@ -137,7 +140,7 @@ try {
                                     </div>
                                     <p class="prijs">€<?php echo $price; ?></p>
                                     <div class="stripe-shadow rounded">
-                                        <button class="add box-shadow">+</button>
+                                        <button class="add box-shadow" onclick='addToCart(<?php echo json_encode($p); ?>)'>+</button>
                                     </div>
                                 </article>
                             </div>
