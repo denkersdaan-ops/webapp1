@@ -23,6 +23,7 @@ try {
     <link rel="stylesheet" href="css/styles.css?v=1">
 
     <script src="js/sort.js?v=1"></script>
+    <script src="js/defer.js?v=1"></script>
 </head>
 
 <body>
@@ -129,23 +130,9 @@ try {
                         $info = htmlspecialchars($p["info"]);
                         $price = number_format($p["price"], 2, ',', '.');
                         $categorie_id = htmlspecialchars($p["categorie_id"]);
-
+                        $productJson = htmlspecialchars(json_encode($p));
                         ?>
-                        <div id="categorie:<?php echo $categorie_id; ?>" class="current-category">
-                            <div class="stripe-shadow rounded">
-                                <article class="product box-shadow">
-                                    <div>
-                                        <h2><?php echo $name; ?></h2>
-                                        <p><?php echo $info; ?></p>
-                                    </div>
-                                    <p class="prijs">€<?php echo $price; ?></p>
-                                    <div class="stripe-shadow rounded">
-                                        <button class="add box-shadow" onclick='addToCart(<?php echo json_encode($p); ?>)'>+</button>
-                                    </div>
-                                </article>
-                            </div>
-                        </div>
-                    
+                        <product-item name="<?php echo $name; ?>" info="<?php echo $info; ?>" price="<?php echo $price; ?>" categorie_id="<?php echo $categorie_id; ?>" product="<?php echo $productJson; ?>"></product-item>
                     <?php
                     }
                     ?>
