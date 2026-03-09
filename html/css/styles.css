@@ -238,10 +238,6 @@ main {
   margin-bottom: 25px;
 }
 
-.hide {
-  display: none;
-}
-
 .products {
   flex: 1 1 auto;
   display: flex;
