@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fastfood</title>
-    <link rel="stylesheet" href="styles.css?v=1">
+    <link rel="stylesheet" href="css/styles.css?v=1">
 </head>
 
 <body>
@@ -47,7 +47,6 @@
         </div>
 
         <section class="layout">
-
             <!-- CATEGORIEËN -->
             <div class="stripe-shadow rounded">
                 <aside class="categories box-shadow box-content" id="category-list">
@@ -59,8 +58,6 @@
                 <section class="products box-shadow box-content" id="product-list">
                 </section>
             </div>
-
-            </section>
             <!-- CART -->
             <div class="stripe-shadow rounded">
                 <aside class="cart box-shadow box-content">
