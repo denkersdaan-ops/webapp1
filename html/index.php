@@ -73,35 +73,6 @@
         </section>
 
     </main>
-
-    <script>
-        // Vraag een HTML-fragment op bij products.php
-        fetch('/api/categories.php')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('category-list').innerHTML = html;
-            })
-            .catch(err => {
-                document.getElementById('category-list').innerHTML =
-                    "<li>Kan data niet laden</li>";
-                console.error(err);
-            });
-    </script>
-
-    <script>
-        // Vraag een HTML-fragment op bij products.php
-        fetch('/api/products.php')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('product-list').innerHTML = html;
-            })
-            .catch(err => {
-                document.getElementById('product-list').innerHTML =
-                    "<li>Kan data niet laden</li>";
-                console.error(err);
-            });
-    </script>
-
 </body>
 
 </html>
