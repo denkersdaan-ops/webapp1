@@ -11,13 +11,25 @@
 <body>
 
     <header class="header">
-        <div class="logo box-shadow">FASTFOOD</div>
 
-        <nav class="nav">
-            <a class="box-shadow" href="#">Home</a>
-            <a class="box-shadow" href="#">Menu</a>
-            <a class="box-shadow" href="#">Contact</a>
+        <!-- LOGO -->
+        <div class="stripe-shadow">
+            <div class="logo box-shadow box-content">FASTFOOD</div>
+        </div>
+
+        <!-- NAV -->
+        <nav class="header-nav">
+            <div class="stripe-shadow nav">
+                <a class="box-shadow box-content" href="#">Home</a>
+            </div>
+            <div class="stripe-shadow nav">
+                <a class="box-shadow box-content" href="#">Menu</a>
+            </div>
+            <div class="stripe-shadow nav">
+                <a class="box-shadow box-content" href="#">Contact</a>
+            </div>
         </nav>
+
     </header>
 
     <main>
