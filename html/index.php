@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $host = "db";              // de Docker service-naam!
 $dbname = "mydatabase";    // uit jouw docker-compose
@@ -25,6 +26,7 @@ try {
     <script src="js/sort.js"></script>
     <script src="js/defer.js"></script>
     <script src="js/shopingcart.js"></script>
+    <script src="js/login.js"></script>
 </head>
 
 <body>
@@ -39,6 +41,9 @@ try {
         <!-- NAV -->
         <nav class="header-nav">
             <div class="stripe-shadow nav">
+                <a id="login-link" class="box-shadow box-content" href="#">log in</a>
+            </div>
+            <div class="stripe-shadow nav">
                 <a class="box-shadow box-content" href="#">Home</a>
             </div>
             <div class="stripe-shadow nav">
@@ -47,9 +52,31 @@ try {
             <div class="stripe-shadow nav">
                 <a class="box-shadow box-content" href="#">Contact</a>
             </div>
+            <?php
+                if (isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] === 1) {
+                    echo '<div class="stripe-shadow nav">
+                            <a class="box-shadow box-content" href="admin.php">Admin</a>
+                          </div>';
+                }
+            ?>
         </nav>
 
     </header>
+
+        <!-- LOGIN MODAL -->
+    <div id="login-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Log In</h2>
+            <form id="login-form">
+                <label for="username">Username:</label>
+                <input type="text" maxlength="40" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" maxlength="40" id="password" name="password" required>
+                <button type="submit">Log In</button>
+            </form>
+        </div>
+    </div>
 
     <main>
 
