@@ -26,10 +26,28 @@ function loadCartItems() {
         let itemTotal = item.price * item.quantity;
         total += itemTotal;
 
-        cartItems.innerHTML += `<p>${item.name} × ${item.quantity} : €${itemTotal.toFixed(2)}</p>`;
+        var newItem = `<div class="cart-item ">
+        <p>${item.name} × ${item.quantity} : €${itemTotal.toFixed(2)}</p>
+        <div class="stripe-shadow rounded">
+        <button class="remove box-shadow box-content" onclick="removeFromCart(${item.id})">-</button>
+        </div>
+        </div>`;
+
+        cartItems.innerHTML += newItem;
     });
 
     totalElement.innerHTML = "Totaal: €" + total.toFixed(2);
+}
+
+function removeFromCart(productId) {
+    let existing = cart.find(item => item.id === productId);
+    if (existing) {
+        existing.quantity--;
+        if (existing.quantity <= 0) {
+            cart = cart.filter(item => item.id !== productId);
+        }
+    }
+    loadCartItems();
 }
 
 function pay() {

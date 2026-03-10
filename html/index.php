@@ -20,11 +20,11 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fastfood</title>
-    <link rel="stylesheet" href="css/styles.css?v=1">
+    <link rel="stylesheet" href="css/styles.css">
 
-    <script src="js/sort.js?v=1"></script>
-    <script src="js/defer.js?v=1"></script>
-    <script src="js/shopingcart.js?v=1"></script>
+    <script src="js/sort.js"></script>
+    <script src="js/defer.js"></script>
+    <script src="js/shopingcart.js"></script>
 </head>
 
 <body>

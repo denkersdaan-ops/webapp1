@@ -274,16 +274,29 @@ main {
   cursor: pointer;
 }
 
+.remove {
+  padding: 0px 19px;
+  border-radius: inherit;
+  background: white;
+  cursor: pointer;
+}
+
 /* =======================================
    CART
 ======================================= */
 .cart {
   height: 100%;
-  width: 260px;
+  width: 360px;
   padding: 25px;
   border-radius: inherit;
 
   overflow-y: auto;
   /* scroll ONLY hier */
   overflow-x: hidden;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
