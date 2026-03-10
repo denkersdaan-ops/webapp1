@@ -24,6 +24,7 @@ try {
 
     <script src="js/sort.js?v=1"></script>
     <script src="js/defer.js?v=1"></script>
+    <script src="js/shopingcart.js?v=1"></script>
 </head>
 
 <body>
@@ -132,8 +133,10 @@ try {
                         $categorie_id = htmlspecialchars($p["categorie_id"]);
                         $productJson = htmlspecialchars(json_encode($p));
                         ?>
-                        <product-item name="<?php echo $name; ?>" info="<?php echo $info; ?>" price="<?php echo $price; ?>" categorie_id="<?php echo $categorie_id; ?>" product="<?php echo $productJson; ?>"></product-item>
-                    <?php
+                        <product-item name="<?php echo $name; ?>" info="<?php echo $info; ?>" price="<?php echo $price; ?>"
+                            categorie_id="<?php echo $categorie_id; ?>"
+                            product="<?php echo $productJson; ?>"></product-item>
+                        <?php
                     }
                     ?>
 

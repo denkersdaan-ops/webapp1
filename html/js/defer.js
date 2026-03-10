@@ -25,42 +25,20 @@ class ProductItem extends HTMLElement {
                     </div>
                     <p class="prijs">€${price}</p>
                     <div class="stripe-shadow rounded">
-                        <button class="add box-shadow" product='${productData}'>+<button>
+                        <button class="add box-shadow">+</button>
                     </div>
                 </article>
             </div>
         `;
-
         
-
+        const button = div.querySelector('button');
+        button.addEventListener('click', () => {
+            const product = JSON.parse(productData);
+            addToCart(product);
+        });
+        
         this.appendChild(div);
     }
 }
 
 customElements.define('product-item', ProductItem);
-
-class AddToCartButton extends HTMLElement {
-    constructor() {
-        super();
-    }
-
-    connectedCallback() {
-        if (this.querySelector('button')) return; // Already initialized
-
-        const button = document.createElement('button');
-        button.className = 'add box-shadow';
-        button.textContent = '+';
-        button.addEventListener('click', () => {
-            const product = JSON.parse(this.getAttribute('product'));
-            addToCart(product);
-            
-        });
-
-        const outline = document.createElement('div');
-        outline.className = 'stripe-shadow rounded';
-        outline.appendChild(button);
-        this.appendChild(outline);
-    }
-}
-
-customElements.define('add-to-cart-button', AddToCartButton);
