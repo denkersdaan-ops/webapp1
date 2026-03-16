@@ -93,6 +93,7 @@ main {
 }
 
 .stripe-maximal {
+    height: 100%;
     flex: 1 1 auto;
     /* grow to fill space, shrink if needed */
     min-height: 0;
