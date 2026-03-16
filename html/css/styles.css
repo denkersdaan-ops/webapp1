@@ -467,4 +467,53 @@ main {
 .extra-text {
     margin-top: 20px;
 }
+
+/* ---------------------------------------------------
+   CONTACT PAGE STYLING
+--------------------------------------------------- */
+
+.contact-info {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-paragraph {
+    margin-top: 10px;
+}
+
+.contact-details {
+    margin-top: 20px;
+    line-height: 2;
+}
+
+.contact-divider {
+    margin: 25px 0;
+}
+
+.contact-button-wrapper {
+    margin-top: 20px;
+}
+
+.contact-form {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-note {
+    margin-bottom: 15px;
+}
+
+.contact-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.contact-textarea {
+    resize: vertical;
 }
