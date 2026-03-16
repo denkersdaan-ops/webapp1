@@ -42,7 +42,7 @@ session_start();
     <section class="layout">
 
         <!-- INFORMATION BLOCK -->
-        <div class="stripe-shadow rounded">
+        <div class="stripe-shadow rounded stripe-maximal">
             <section class="box-shadow box-content hero stripe-maximal contact-info">
                 <h2>Reach Out</h2>
                 <p class="contact-paragraph">
@@ -73,7 +73,7 @@ session_start();
 
         <!-- CONTACT FORM -->
         <div class="stripe-shadow rounded">
-            <section class="box-shadow box-content hero stripe-maximal contact-form">
+            <section class="box-shadow box-content hero contact-form">
                 <h2>Send Us a Message</h2>
                 <p class="contact-note">This form is for demonstration purposes only.</p>
 
