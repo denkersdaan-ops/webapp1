@@ -1,23 +1,18 @@
 <?php
 
-$host = "db";              // de Docker service-naam!
-$dbname = "mydatabase";    // uit jouw docker-compose
-$username = "user";        // MYSQL_USER
-$password = "password";    // MYSQL_PASSWORD
-
-try {
-    $dsn = "mysql:host=$host;dbname=$dbname;charset=utf8";
-    $pdo = new PDO($dsn, $username, $password);
-} catch (PDOException $e) {
-    echo json_encode(['success' => false, 'message' => 'Database fout']);
-    exit;
-}
+include_once("loadDb.php");
 
 header('Content-Type: application/json');
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $inputUsername = $_POST['username'] ?? '';
-    $inputPassword = $_POST['password'] ?? '';
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $inputUsername = '';
+    if(isset($_POST['name'])) {
+        $inputUsername = $_POST['name'];
+    }
+    $inputPassword = '';
+    if(isset($_POST['password'])) {
+        $inputPassword = $_POST['password'];
+    }
 
     if (empty($inputUsername) || empty($inputPassword)) {
         echo json_encode(['success' => false, 'message' => 'Vul alle velden in']);

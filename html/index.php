@@ -1,17 +1,7 @@
 <?php
 session_start();
 
-$host = "db";              // de Docker service-naam!
-$dbname = "mydatabase";    // uit jouw docker-compose
-$username = "user";        // MYSQL_USER
-$password = "password";    // MYSQL_PASSWORD
-
-try {
-    $dsn = "mysql:host=$host;dbname=$dbname;charset=utf8";
-    $pdo = new PDO($dsn, $username, $password);
-} catch (PDOException $e) {
-    echo "Database fout: " . $e->getMessage();
-}
+include_once("php/loadDB.php");
 ?>
 
 <!DOCTYPE html>
@@ -31,37 +21,9 @@ try {
 
 <body>
 
-    <header class="header">
-
-        <!-- LOGO -->
-        <div class="stripe-shadow">
-            <div class="logo box-shadow box-content">FASTFOOD</div>
-        </div>
-
-        <!-- NAV -->
-        <nav class="header-nav">
-            <div class="stripe-shadow nav">
-                <a id="login-link" class="box-shadow box-content" href="#">log in</a>
-            </div>
-            <div class="stripe-shadow nav">
-                <a class="box-shadow box-content" href="#">Home</a>
-            </div>
-            <div class="stripe-shadow nav">
-                <a class="box-shadow box-content" href="#">Menu</a>
-            </div>
-            <div class="stripe-shadow nav">
-                <a class="box-shadow box-content" href="#">Contact</a>
-            </div>
-            <?php
-                if (isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] === 1) {
-                    echo '<div class="stripe-shadow nav">
-                            <a class="box-shadow box-content" href="admin.php">Admin</a>
-                          </div>';
-                }
-            ?>
-        </nav>
-
-    </header>
+    <?php
+   include_once("phpAsHtml/header.php");
+   ?>
 
         <!-- LOGIN MODAL -->
     <div id="login-modal" class="modal" style="display: none;">
@@ -93,10 +55,10 @@ try {
         </div>
 
         <section class="layout">
-            <!-- CATEGORIEËN -->
+            <!-- categoryËN -->
             <div class="stripe-shadow rounded">
                 <?php
-                $stmt = $pdo->query("SELECT * FROM categorie ORDER BY id");
+                $stmt = $pdo->query("SELECT * FROM category ORDER BY id");
                 $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
@@ -106,7 +68,7 @@ try {
                 }
 
                 if (!is_array($categories)) {
-                    error_log('categories.php: Categories data is not an array. Check database connection and query.');
+                    error_log('categories.php: categories data is not an array. Check database connection and query.');
                     $categories = [
                         ["description" => "Demo category", "img" => "../images/demo.png"],
                     ];
@@ -121,7 +83,7 @@ try {
                         $img = htmlspecialchars($C["image"]);
                         $id = htmlspecialchars($C["id"]);
                         ?>
-                        <div class="stripe-shadow rounded"> <button id="<?php echo $id; ?>" onclick="setCategories(this.id)"
+                        <div class="stripe-shadow rounded stripe-minimal"> <button id="<?php echo $id; ?>" onclick="setcategories(this.id)"
                                 class="category box-shadow"><img class="category-icon" src="<?php echo $img; ?>"
                                     alt="<?php echo $description; ?>"></button></div>
                         <?php
@@ -134,7 +96,7 @@ try {
             <div class="stripe-shadow stripe-maximal rounded">
                 <?php
                 // Load all products - filtering happens in JavaScript
-                $stmt = $pdo->query("SELECT * FROM product ORDER BY categorie_id");
+                $stmt = $pdo->query("SELECT * FROM product ORDER BY category_id");
                 $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
@@ -157,11 +119,11 @@ try {
                         $name = htmlspecialchars($p["name"]);
                         $info = htmlspecialchars($p["info"]);
                         $price = number_format($p["price"], 2, ',', '.');
-                        $categorie_id = htmlspecialchars($p["categorie_id"]);
+                        $category_id = htmlspecialchars($p["category_id"]);
                         $productJson = htmlspecialchars(json_encode($p));
                         ?>
                         <product-item name="<?php echo $name; ?>" info="<?php echo $info; ?>" price="<?php echo $price; ?>"
-                            categorie_id="<?php echo $categorie_id; ?>"
+                            category_id="<?php echo $category_id; ?>"
                             product="<?php echo $productJson; ?>"></product-item>
                         <?php
                     }

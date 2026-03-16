@@ -22,19 +22,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('login-form').addEventListener('submit', async (e) => {
         e.preventDefault();
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
 
-        const formData = new FormData();
-        formData.append('username', username);
+        console.log('Username:', username, 'Password:', password);
+
+        if (!username || !password) {
+            alert('Please fill in all fields');
+            return;
+        }
+
+        const formData = new URLSearchParams();
+        formData.append('name', username);
         formData.append('password', password);
 
-        console.log('Attempting login with:', formData.get('username'), formData.get('password'));
+        console.log('Sending data:', formData.toString());
         
         try {
-            const response = await fetch('login.php', {
+            const response = await fetch('php/login.php', {
                 method: 'POST',
-                body: formData
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: formData,
             });
             const text = await response.text();
             console.log('Response text:', text);

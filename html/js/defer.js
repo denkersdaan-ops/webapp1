@@ -32,6 +32,7 @@ class ProductItem extends HTMLElement {
         `;
         
         const button = div.querySelector('button');
+        
         button.addEventListener('click', () => {
             const product = JSON.parse(productData);
             addToCart(product);
