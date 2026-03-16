@@ -441,3 +441,30 @@ main {
     justify-content: space-between;
     gap: 10px;
 }
+
+/* -----------------------------------------
+   HOME PAGE ADDITIONS
+----------------------------------------- */
+
+.info-block {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.usp-list {
+    margin-top: 10px;
+    line-height: 1.8;
+    list-style: none;
+}
+
+.usp-list li::before {
+    content: "• ";
+    margin-right: 6px;
+}
+
+.extra-text {
+    margin-top: 20px;
+}
+}
