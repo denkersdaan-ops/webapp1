@@ -333,20 +333,24 @@ main {
     color: black;
 }
 
+#register-form,
 #login-form {
     display: flex;
     flex-direction: column;
 }
 
+#register-form label,
 #login-form label {
     margin-top: 10px;
 }
 
+#register-form input,
 #login-form input {
     padding: 5px;
     margin-bottom: 10px;
 }
 
+#register-form button,
 #login-form button {
     padding: 10px;
     background-color: #4CAF50;

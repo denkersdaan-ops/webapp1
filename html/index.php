@@ -11,7 +11,6 @@ include_once("php/loadDB.php");
     <title>Fastfood — Home</title>
 
     <link rel="stylesheet" href="css/styles.css">
-    <script src="js/login.js"></script>
 </head>
 
 <body>
@@ -20,18 +19,7 @@ include_once("php/loadDB.php");
 
     <main>
 
-        <!-- LOGIN MODAL -->
-        <div id="login-modal" class="modal" style="display: none;">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>Log In</h2>
-                <form id="login-form">
-                    Username:<input type="text" id="username" maxlength="40" required>
-                    Password:<input type="password" id="password" maxlength="40" required>
-                    <button type="submit">Log In</button>
-                </form>
-            </div>
-        </div>
+        <?php include_once("phpAsHtml/login-register.php"); ?>
 
         <!-- HERO -->
         <div class="stripe-shadow">

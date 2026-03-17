@@ -16,29 +16,14 @@ include_once("php/loadDB.php");
     <script src="js/sort.js"></script>
     <script src="js/defer.js"></script>
     <script src="js/shopingcart.js"></script>
-    <script src="js/login.js"></script>
 </head>
 
 <body>
 
     <?php
-   include_once("phpAsHtml/header.php");
-   ?>
-
-        <!-- LOGIN MODAL -->
-    <div id="login-modal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Log In</h2>
-            <form id="login-form">
-                <label for="username">Username:</label>
-                <input type="text" maxlength="40" id="username" name="username" required>
-                <label for="password">Password:</label>
-                <input type="password" maxlength="40" id="password" name="password" required>
-                <button type="submit">Log In</button>
-            </form>
-        </div>
-    </div>
+    include_once("phpAsHtml/header.php");
+    ?>
+    <?php include_once("phpAsHtml/login-register.php"); ?>
 
     <main>
 
@@ -83,9 +68,9 @@ include_once("php/loadDB.php");
                         $img = htmlspecialchars($C["image"]);
                         $id = htmlspecialchars($C["id"]);
                         ?>
-                        <div class="stripe-shadow rounded stripe-minimal"> <button id="<?php echo $id; ?>" onclick="setcategories(this.id)"
-                                class="category box-shadow"><img class="category-icon" src="<?php echo $img; ?>"
-                                    alt="<?php echo $description; ?>"></button></div>
+                        <div class="stripe-shadow rounded stripe-minimal"> <button id="<?php echo $id; ?>"
+                                onclick="setcategories(this.id)" class="category box-shadow"><img class="category-icon"
+                                    src="<?php echo $img; ?>" alt="<?php echo $description; ?>"></button></div>
                         <?php
                     }
                     ?>
@@ -123,8 +108,7 @@ include_once("php/loadDB.php");
                         $productJson = htmlspecialchars(json_encode($p));
                         ?>
                         <product-item name="<?php echo $name; ?>" info="<?php echo $info; ?>" price="<?php echo $price; ?>"
-                            category_id="<?php echo $category_id; ?>"
-                            product="<?php echo $productJson; ?>"></product-item>
+                            category_id="<?php echo $category_id; ?>" product="<?php echo $productJson; ?>"></product-item>
                         <?php
                     }
                     ?>

@@ -14,14 +14,14 @@ include 'php/loginCheck.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fastfood admin</title>
     <link rel="stylesheet" href="css/styles.css">
-
-    <script src="js/login.js"></script>
 </head>
 
 <body>
     <?php
     include_once("phpAsHtml/header.php");
     ?>
+
+    <?php include_once("phpAsHtml/login-register.php"); ?>
 
     <main class="admin-main stripe-shadow">
         <div class="admin-content box-content box-shadow">

@@ -9,27 +9,17 @@ session_start();
     <title>Contact — Fastfood</title>
 
     <link rel="stylesheet" href="css/styles.css">
-    <script src="js/login.js"></script>
 </head>
 
 <body>
 
 <?php include_once("phpAsHtml/header.php"); ?>
 
-<!-- LOGIN MODAL -->
-<div id="login-modal" class="modal" style="display: none;">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Log In</h2>
-        <form id="login-form">
-            Username:<input type="text" id="username" maxlength="40" required>
-            Password:<input type="password" id="password" maxlength="40" required>
-            <button type="submit">Log In</button>
-        </form>
-    </div>
-</div>
+
 
 <main>
+
+<?php include_once("phpAsHtml/login-register.php"); ?>
 
     <!-- HERO -->
     <div class="stripe-shadow">
