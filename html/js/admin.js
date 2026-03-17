@@ -394,7 +394,7 @@ for (var i = 0; i < submitButtons.length; i++) {
 
         if (type === "category") {
             const button = document.getElementById(buttonId);
-            const categoryName = button ? (button.value || button.textContent).replace(/^Name:\s*/i, '').trim() : '';
+            const categoryName = button.value.split(': ')[1];
 
             // Set the visible category name field (for selecting category in product form)
             const categoryNameInput = document.querySelector('input[name="category_id_name"]');
