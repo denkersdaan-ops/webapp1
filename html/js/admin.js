@@ -94,7 +94,8 @@ function setMode(type) {
                     <input type="text" name="name" placeholder="Product name" required>
                     <input type="text" name="info" placeholder="Product info" required>
                     <input type="number" step="0.01" name="price" placeholder="Product price" required>
-                    <input type="text" name="category_name" placeholder="Click category" readonly required>
+                    <input type="text" name="category_id_name" placeholder="Click category" readonly required>
+                    <input type="hidden" name="category_id" required>
                     <button type="submit">+</button>
                 </form>
             `;
@@ -396,17 +397,17 @@ for (var i = 0; i < submitButtons.length; i++) {
             const button = document.getElementById(buttonId);
             const categoryName = button.value.split(': ')[1];
 
+            console.log("Category button clicked:", categoryName, "(id=" + itemId + ")");
+
             // Set the visible category name field (for selecting category in product form)
             const categoryNameInput = document.querySelector('input[name="category_id_name"]');
-            if (categoryNameInput) {
-                categoryNameInput.value = categoryName;
-            }
+            categoryNameInput.value = categoryName;
+
 
             // Set the actual category id field (used when saving product)
-            const categoryIdInput = document.querySelector('input[name="category_id"]');
-            if (categoryIdInput) {
-                categoryIdInput.value = itemId;
-            }
+            const categoryIdInput = document.querySelector('input[name="category_id"]');            
+            categoryIdInput.value = itemId;
+
 
             console.log("Category selected:", categoryName, "(id=" + itemId + ")");
         }

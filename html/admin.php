@@ -53,8 +53,8 @@ include 'php/loginCheck.php';
                                 foreach ($categories as $category) {
                                     ?>
                                     <div>
-                                        <input type="submit" class="submit-btn" id="category-<?php echo $category['id']; ?>" name="category"
-                                            value="<?php echo "Name: " . htmlspecialchars($category['name']); ?>">
+                                        <input type="submit" class="submit-btn" id="category-<?= $category['id']; ?>" name="category"
+                                            value="<?= "Name: " . htmlspecialchars($category['name']); ?>">
                                     </div><?php
                                 }
                                 ?>
@@ -89,8 +89,8 @@ include 'php/loginCheck.php';
                                 foreach ($products as $product) {
                                     ?>
                                     <div>
-                                        <input type="submit" class="submit-btn" id="product-<?php echo $product['id']; ?>" name="product"
-                                            value="<?php echo "Name: " . htmlspecialchars($product['name']); ?>">
+                                        <input type="submit" class="submit-btn" id="product-<?= $product['id']; ?>" name="product"
+                                            value="<?= "Name: " . htmlspecialchars($product['name']); ?>">
                                     </div>
                                     <?php
                                 }

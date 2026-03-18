@@ -68,9 +68,9 @@ include_once("php/loadDB.php");
                         $img = htmlspecialchars($C["image"]);
                         $id = htmlspecialchars($C["id"]);
                         ?>
-                        <div class="stripe-shadow rounded stripe-minimal"> <button id="<?php echo $id; ?>"
+                        <div class="stripe-shadow rounded stripe-minimal"> <button id="<?= $id; ?>"
                                 onclick="setcategories(this.id)" class="category box-shadow"><img class="category-icon"
-                                    src="<?php echo $img; ?>" alt="<?php echo $description; ?>"></button></div>
+                                    src="<?= $img; ?>" alt="<?= $description; ?>"></button></div>
                         <?php
                     }
                     ?>
@@ -107,8 +107,8 @@ include_once("php/loadDB.php");
                         $category_id = htmlspecialchars($p["category_id"]);
                         $productJson = htmlspecialchars(json_encode($p));
                         ?>
-                        <product-item name="<?php echo $name; ?>" info="<?php echo $info; ?>" price="<?php echo $price; ?>"
-                            category_id="<?php echo $category_id; ?>" product="<?php echo $productJson; ?>"></product-item>
+                        <product-item name="<?= $name; ?>" info="<?= $info; ?>" price="<?= $price; ?>"
+                            category_id="<?= $category_id; ?>" product="<?= $productJson; ?>"></product-item>
                         <?php
                     }
                     ?>
