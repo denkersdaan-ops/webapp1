@@ -10,8 +10,10 @@ $output = "";
 
 for ($i = 0; $i < sizeof($ids); $i++) {
 
-    $stmt = $pdo->query("SELECT * FROM product WHERE id = $ids[$i]");
+    $stmt = $pdo->prepare("SELECT * FROM product WHERE id = :id");
 
+    $stmt->bindParam(':id', $ids[$i], PDO::PARAM_INT);
+    
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
     $currentBought = $row ? $row['bought'] : 0;
