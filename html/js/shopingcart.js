@@ -1,7 +1,7 @@
 
 var cart = [];
 
-function addToCart(product) {    
+function addToCart(product) {
     let existing = cart.find(item => item.id === product.id);
 
     if (existing) {
@@ -54,18 +54,24 @@ function pay() {
 
     console.log("Cart contents: ");
 
-    fetch("products.php", {
+    let ids = [];
+    let quantity = [];
+
+    for(let i = 0; i < cart.length; i++){
+        ids[i] = cart[i].id;
+        quantity[i] = cart[i].quantity;
+    }
+
+    fetch("../php/products.php", {
         method: "POST",
         headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
+            'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: "ids=" + cart.map(item => item.id + ":" + item.quantity).join(",")
-    })
-        .then(response => response.text())
-        .then(data => {
-            console.log(data);
-        });
-
+        body: new URLSearchParams({
+            ids: ids,
+            quantity: quantity 
+        })
+    });
     alert("Bedankt voor uw aankoop! Uw totale bedrag is: " + cart.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2));
 
     cart = [];

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Gegenereerd op: 19 mrt 2026 om 12:27
+-- Gegenereerd op: 30 mrt 2026 om 14:51
 -- Serverversie: 8.4.8
 -- PHP-versie: 8.3.30
 
@@ -56,26 +56,27 @@ CREATE TABLE `product` (
   `name` varchar(30) NOT NULL,
   `info` text NOT NULL,
   `price` decimal(10,2) NOT NULL,
-  `category_id` int NOT NULL
+  `category_id` int NOT NULL,
+  `bought` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `product`
 --
 
-INSERT INTO `product` (`id`, `name`, `info`, `price`, `category_id`) VALUES
-(1, 'Basic Burger', 'a pork burger with some tomatoes and mayo', 6.90, 1),
-(2, 'Cheeseburger', 'Classic beef burger with melted cheddar cheese.', 5.99, 1),
-(3, 'Double Bacon Burger', 'Two beef patties, crispy bacon and special sauce.', 8.49, 1),
-(4, 'Jalapeno Spicy Burger', 'Beef burger topped with jalapenos and hot sauce.', 6.99, 1),
-(5, 'Regular Fries', 'Crispy salted fries.', 2.49, 2),
-(6, 'Cheese Fries', 'Fries with melted cheese sauce.', 3.49, 2),
-(7, 'Curly Fries', 'Seasoned curly fries with extra crunch.', 3.99, 2),
-(8, 'Cola', 'Chilled carbonated cola beverage.', 1.99, 3),
-(9, 'Lemonade', 'Fresh and sweet homemade lemonade.', 2.29, 3),
-(10, 'Chocolate Sundae', 'Vanilla ice cream with chocolate syrup.', 2.99, 4),
-(11, 'Chicken Strips', 'Crispy fried golden chicken strips.', 4.99, 5),
-(13, 'Chicken burger', 'A nice crispy chicken on our burger', 6.50, 1);
+INSERT INTO `product` (`id`, `name`, `info`, `price`, `category_id`, `bought`) VALUES
+(1, 'Basic Burger', 'a pork burger with some tomatoes and mayo', 6.90, 1, 11),
+(2, 'Cheeseburger', 'Classic beef burger with melted cheddar cheese.', 5.99, 1, 7),
+(3, 'Double Bacon Burger', 'Two beef patties, crispy bacon and special sauce.', 8.49, 1, 4),
+(4, 'Jalapeno Spicy Burger', 'Beef burger topped with jalapenos and hot sauce.', 6.99, 1, 0),
+(5, 'Regular Fries', 'Crispy salted fries.', 2.49, 2, 0),
+(6, 'Cheese Fries', 'Fries with melted cheese sauce.', 3.49, 2, 0),
+(7, 'Curly Fries', 'Seasoned curly fries with extra crunch.', 3.99, 2, 0),
+(8, 'Cola', 'Chilled carbonated cola beverage.', 1.99, 3, 0),
+(9, 'Lemonade', 'Fresh and sweet homemade lemonade.', 2.29, 3, 0),
+(10, 'Chocolate Sundae', 'Vanilla ice cream with chocolate syrup.', 2.99, 4, 0),
+(11, 'Chicken Strips', 'Crispy fried golden chicken strips.', 4.99, 5, 0),
+(13, 'Chicken burger', 'A nice crispy chicken on our burger', 6.50, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -133,7 +134,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT voor een tabel `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT voor een tabel `user`

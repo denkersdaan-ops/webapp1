@@ -60,7 +60,7 @@ function addCategory($pdo)
 
     $stmt->execute();
 
-    echo json_encode(['success' => true, 'message' => 'Category added successfully.']);
+    echo json_encode(['success' => true, 'message' => 'Category added successfully.' , 'data' => ['id' => $pdo->lastInsertId(), 'name' => $name, 'image' => $image]]);
     exit;
 }
 
