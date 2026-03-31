@@ -521,3 +521,164 @@ main {
 .contact-textarea {
     resize: vertical;
 }
+
+.addbutten {
+    width: min-content;
+}
+
+/* =======================================
+   RESPONSIVE DESIGN
+======================================= */
+@media (max-width: 1024px) {
+    .cart {
+        width: 100%;
+        min-width: 0;
+        padding: 15px;
+    }
+
+    .products {
+        padding: 10px;
+    }
+
+    .categories {
+        flex-direction: row;
+        padding: 5px;
+        overflow-y: hidden;
+        overflow-x: auto;
+    }
+
+    .layout {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+
+    .item-1 {
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+
+    .item-2,
+    .item-3 {
+        flex: 1;
+    }
+
+
+    body {
+        overflow: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+        gap: 20px;
+    }
+
+    .header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    .logo {
+        font-size: 1.1rem;
+        padding: 10px 0;
+    }
+
+    .header-nav {
+        gap: 8px;
+        padding-top: 5px;
+    }
+
+    .header-nav div a{
+        padding: 10px 12px;
+        font-size: 0.80rem;
+    }
+
+    .hero {
+        padding: 15px;
+    }
+
+    .cta {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    .cart {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .products {
+        padding: 5px;
+    }
+
+    .category {
+        padding: 8px;
+    }
+
+    .product {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .admin-content,
+    .sections {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .admin-section {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+
+    html,
+    body {
+        font-size: 15px;
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+
+    .hero h1 {
+        font-size: 1.2rem;
+    }
+
+    .cta {
+        font-size: 0.95rem;
+        padding: 8px 10px;
+    }
+
+    .cart {
+        padding: 5px;
+    }
+
+    .products {
+        padding: 2px;
+    }
+
+    .category {
+        padding: 5px;
+    }
+
+    .product {
+        padding: 5px;
+    }
+
+    .modal-content {
+        width: 95vw;
+        margin: 10% auto;
+        padding: 10px;
+    }
+
+    .contact-info,
+    .contact-form {
+        padding: 10px;
+    }
+}

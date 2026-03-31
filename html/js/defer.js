@@ -24,7 +24,7 @@ class ProductItem extends HTMLElement {
                         <p>${info}</p>
                     </div>
                     <p class="prijs">€${price}</p>
-                    <div class="stripe-shadow rounded">
+                    <div class="stripe-shadow addbutten rounded">
                         <button class="add box-shadow">+</button>
                     </div>
                 </article>

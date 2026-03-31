@@ -41,7 +41,7 @@ include_once("php/loadDB.php");
 
         <section class="layout">
             <!-- categories -->
-            <div class="stripe-shadow rounded">
+            <div class="stripe-shadow item-1 rounded">
                 <?php
                 $stmt = $pdo->query("SELECT * FROM category ORDER BY id");
                 $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -78,7 +78,7 @@ include_once("php/loadDB.php");
             </div>
 
             <!-- PRODUCTS SCROLLBOX (may NOT get a shadow wrapper) -->
-            <div class="stripe-shadow stripe-maximal rounded">
+            <div class="stripe-shadow stripe-maximal item-2 rounded">
                 <?php
                 // Load all products - filtering happens in JavaScript
                 $stmt = $pdo->query("SELECT * FROM product ORDER BY category_id");
@@ -116,7 +116,7 @@ include_once("php/loadDB.php");
                 </section>
             </div>
             <!-- CART -->
-            <div class="stripe-shadow rounded">
+            <div class="stripe-shadow item-3 rounded">
                 <aside class="cart box-shadow box-content">
                     <h3>Shopping cart</h3>
                     <p id="cart-items"></p>
