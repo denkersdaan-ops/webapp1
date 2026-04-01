@@ -13,7 +13,8 @@ for ($i = 0; $i < sizeof($ids); $i++) {
     $stmt = $pdo->prepare("SELECT * FROM product WHERE id = :id");
 
     $stmt->bindParam(':id', $ids[$i], PDO::PARAM_INT);
-    
+    $stmt->execute();
+
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
     $currentBought = $row ? $row['bought'] : 0;
