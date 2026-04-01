@@ -64,22 +64,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-function register(){
-    const modal = document.getElementById('register-modal');
-    modal.style.display = 'block';
 
-    const closeBtn = modal.querySelector('.close');
+// Register modal logic: only add submit listener once
+document.addEventListener('DOMContentLoaded', () => {
+    const registerModal = document.getElementById('register-modal');
+    const registerForm = document.getElementById('register-form');
+    const closeBtn = registerModal.querySelector('.close');
+
+    // Show modal function
+    window.register = function() {
+        registerModal.style.display = 'block';
+    };
+
     closeBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
+        registerModal.style.display = 'none';
     });
 
     document.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.style.display = 'none';
+        if (e.target === registerModal) {
+            registerModal.style.display = 'none';
         }
     });
 
-    document.getElementById('register-form').addEventListener('submit', async (e) => {
+    // Only add submit listener once
+    registerForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const username = document.getElementById('register-username').value.trim();
         const password = document.getElementById('register-password').value.trim();
@@ -114,7 +122,7 @@ function register(){
 
             if (result.success) {
                 alert(result.message);
-                modal.style.display = 'none';
+                registerModal.style.display = 'none';
             } else {
                 alert(result.message);
             }
@@ -122,5 +130,5 @@ function register(){
             alert('Fout bij registreren: ' + error.message);
         }
     });
-}
+});
 
