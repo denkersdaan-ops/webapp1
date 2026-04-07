@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 include_once("loadDb.php");
 
@@ -31,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($user) {
             // Login successful
-            session_start();
+            $_SESSION['islogedin'] = true;
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['name'];
             $_SESSION['isAdmin'] = $user['isAdmin'];

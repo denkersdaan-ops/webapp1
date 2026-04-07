@@ -1,4 +1,4 @@
- <header class="header">
+  <header class="header">
 
         <!-- LOGO -->
         <div class="stripe-shadow">
@@ -7,9 +7,19 @@
 
         <!-- NAV -->
         <nav class="header-nav">
-            <div class="stripe-shadow nav">
-                <a id="login-link" class="box-shadow box-content" href="#">Login</a>
-            </div>
+            <?php
+            if (!isset($_SESSION["islogedin"])) { ?>
+                <div class="stripe-shadow nav">
+                    <a id="login-link" class="box-shadow box-content" href="#">Login</a>
+                </div>
+            <?php } else { ?>
+                <div class="stripe-shadow">
+                    <form action="" method="post" class="box-shadow box-content">
+                        <input type="hidden" name="logout" value="true">
+                        <button type="submit"><p>Logout</p></button>
+                    </form>
+                </div>
+            <?php } ?>
             <div class="stripe-shadow nav">
                 <a class="box-shadow box-content" href="index.php">Home</a>
             </div>

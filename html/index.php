@@ -1,5 +1,7 @@
 <?php
 session_start();
+include_once("php/logout.php");
+
 include_once("php/loadDB.php");
 ?>
 <!DOCTYPE html>

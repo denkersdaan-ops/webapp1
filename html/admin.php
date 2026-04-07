@@ -1,8 +1,14 @@
 <?php
 session_start();
 
+if(isset($_POST['logout']) && $_POST['logout'] == 'true') {
+     session_unset();
+    session_destroy();
+    header("Location: index.php");
+    exit;
+}
 include_once("php/loadDB.php");
-include 'php/loginCheck.php';
+include 'php/loginCheck.php';   
 
 ?>
 

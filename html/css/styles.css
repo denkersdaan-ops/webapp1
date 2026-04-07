@@ -144,7 +144,7 @@ main {
     display: flex;
     gap: 15px;
     height: 100%;
-    align-items: end;
+    align-items: center;
 }
 
 .header-nav a {
@@ -152,6 +152,22 @@ main {
     padding-top: 15px;
     text-decoration: none;
     color: black;
+}
+
+.header-nav form {
+    display: inline-flex;
+    align-items: center;
+}
+
+.header-nav form button {
+ padding-left: 15px;
+    padding-top: 15px;
+
+    background: white;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    min-width: 0;
 }
 
 .nav {
@@ -591,7 +607,7 @@ main {
         padding-top: 5px;
     }
 
-    .header-nav div a{
+    .header-nav div a {
         padding: 10px 12px;
         font-size: 0.80rem;
     }
