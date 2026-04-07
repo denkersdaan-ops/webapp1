@@ -103,7 +103,7 @@ include_once("php/loadDB.php");
 
                 } else {
 
-                    $stmt = $pdo->prepare("SELECT * FROM product WHERE `name` LIKE :search ORDER BY category_id");
+                    $stmt = $pdo->prepare("SELECT * FROM product WHERE `name` LIKE :search or info LIKE :search ORDER BY category_id");
 
                     $search = isset($_GET['search']) ? $_GET['search'] : '';
                     $stmt->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
