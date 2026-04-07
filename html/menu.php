@@ -36,6 +36,11 @@ include_once("php/loadDB.php");
                 <div class="stripe-shadow stripe-minimal">
                     <button class="cta box-shadow box-content" onclick="pay()">Order now</button>
                 </div>
+
+                <form action="menu.php" method="get">
+                    <input type="text" name="search" placeholder="Search products...">
+                    <button type="submit">Search</button>
+                </form>
             </section>
         </div>
 
@@ -59,8 +64,6 @@ include_once("php/loadDB.php");
                     ];
                 }
                 ?>
-
-
                 <aside class="categories box-shadow box-content" id="category-list">
                     <?php
                     foreach ($categories as $C) {
@@ -69,7 +72,7 @@ include_once("php/loadDB.php");
                         $id = htmlspecialchars($C["id"]);
                         ?>
                         <div class="stripe-shadow rounded stripe-minimal"> <button id="<?= $id; ?>"
-                                onclick="setcategories(this.id)" class="category box-shadow"><img class="category-icon"
+                                onclick="setCategories(this.id)" class="category box-shadow"><img class="category-icon"
                                     src="<?= $img; ?>" alt="<?= $description; ?>"></button></div>
                         <?php
                     }
@@ -81,7 +84,12 @@ include_once("php/loadDB.php");
             <div class="stripe-shadow stripe-maximal item-2 rounded">
                 <?php
                 // Load all products - filtering happens in JavaScript
-                $stmt = $pdo->query("SELECT * FROM product ORDER BY category_id");
+                $stmt = $pdo->prepare("SELECT * FROM product WHERE `name` LIKE :search ORDER BY category_id");
+
+                $search = isset($_GET['search']) ? $_GET['search'] : '';
+                $stmt->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
+                $stmt->execute();
+
                 $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
@@ -100,16 +108,20 @@ include_once("php/loadDB.php");
                 ?>
                 <section class="products box-shadow box-content" id="product-list">
                     <?php
-                    foreach ($products as $p) {
-                        $name = htmlspecialchars($p["name"]);
-                        $info = htmlspecialchars($p["info"]);
-                        $price = number_format($p["price"], 2, ',', '.');
-                        $category_id = htmlspecialchars($p["category_id"]);
-                        $productJson = htmlspecialchars(json_encode($p));
-                        ?>
-                        <product-item name="<?= $name; ?>" info="<?= $info; ?>" price="<?= $price; ?>"
-                            category_id="<?= $category_id; ?>" product="<?= $productJson; ?>"></product-item>
-                        <?php
+                    if (empty($products)) {
+                        echo "<p>No products found.</p>";
+                    } else {
+                        foreach ($products as $p) {
+                            $name = htmlspecialchars($p["name"]);
+                            $info = htmlspecialchars($p["info"]);
+                            $price = number_format($p["price"], 2, ',', '.');
+                            $category_id = htmlspecialchars($p["category_id"]);
+                            $productJson = htmlspecialchars(json_encode($p));
+                            ?>
+                            <product-item name="<?= $name; ?>" info="<?= $info; ?>" price="<?= $price; ?>"
+                                category_id="<?= $category_id; ?>" product="<?= $productJson; ?>"></product-item>
+                            <?php
+                        }
                     }
                     ?>
 
