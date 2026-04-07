@@ -71,9 +71,17 @@ include_once("php/loadDB.php");
                         $img = htmlspecialchars($C["image"]);
                         $id = htmlspecialchars($C["id"]);
                         ?>
-                        <div class="stripe-shadow rounded stripe-minimal"> <button id="<?= $id; ?>"
-                                onclick="setCategories(this.id)" class="category box-shadow"><img class="category-icon"
-                                    src="<?= $img; ?>" alt="<?= $description; ?>"></button></div>
+                        <form action="menu.php" method="get">
+                            <input type="hidden" name="category" value="<?= $id; ?>">
+                            <div
+                                class="stripe-shadow rounded stripe-minimal<?php if (isset($_GET['category']) && $id == $_GET['category']) {
+                                    echo ' last-button';
+                                } ?>">
+                                <button type="submit" id="<?= $id; ?>" class="category box-shadow">
+                                    <img src="<?= $img; ?>" alt="<?= $description; ?>" class="category-icon">
+                                </button>
+                            </div>
+                        </form>
                         <?php
                     }
                     ?>
@@ -83,14 +91,26 @@ include_once("php/loadDB.php");
             <!-- PRODUCTS SCROLLBOX (may NOT get a shadow wrapper) -->
             <div class="stripe-shadow stripe-maximal item-2 rounded">
                 <?php
-                // Load all products - filtering happens in JavaScript
-                $stmt = $pdo->prepare("SELECT * FROM product WHERE `name` LIKE :search ORDER BY category_id");
+                if (isset($_GET['category'])) {
 
-                $search = isset($_GET['search']) ? $_GET['search'] : '';
-                $stmt->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
-                $stmt->execute();
+                $stmt = $pdo->prepare("SELECT * FROM product where category_id = :category");
 
-                $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    $category = isset($_GET['category']) ? $_GET['category'] : '';
+                    $stmt->bindValue(':category', $category, PDO::PARAM_STR);
+                    $stmt->execute();
+
+                    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                } else {
+
+                    $stmt = $pdo->prepare("SELECT * FROM product WHERE `name` LIKE :search ORDER BY category_id");
+
+                    $search = isset($_GET['search']) ? $_GET['search'] : '';
+                    $stmt->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
+                    $stmt->execute();
+
+                    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                }
 
 
                 if (!$stmt) {
